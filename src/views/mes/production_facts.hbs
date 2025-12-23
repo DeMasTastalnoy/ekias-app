@@ -1,0 +1,53 @@
+<h1>{{title}}</h1>
+
+<section class="card">
+  <h2>Добавить факт производства</h2>
+  <form method="post" action="/mes/production-facts" class="form-grid">
+    <label>
+      Номер заказа
+      <select name="order_id" required>
+        {{#each orders}}
+          <option value="{{id}}">{{order_number}} - {{product_name}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <label>
+      Количество произведённого
+      <input type="number" name="produced_quantity" required>
+    </label>
+    <label>
+      Дата производства
+      <input type="date" name="production_date" required>
+    </label>
+
+    <button type="submit" class="btn">Добавить факт</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Список фактов производства</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Номер заказа</th>
+        <th>Продукция</th>
+        <th>Произведено</th>
+        <th>Дата производства</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each productionFacts}}
+        <tr>
+          <td>{{order_number}}</td>
+          <td>{{product_name}}</td>
+          <td>{{produced_quantity}}</td>
+          <td>{{production_date}}</td>
+        </tr>
+      {{else}}
+        <tr>
+          <td colspan="4">Нет фактов производства</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>

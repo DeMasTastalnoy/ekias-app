@@ -1,0 +1,57 @@
+<h1>Бюджеты</h1>
+
+<section class="card">
+    <h2>Добавить бюджет</h2>
+    <form method="post" action="/finance/budgets" class="form-grid">
+        <label>
+            Наименование
+            <input type="text" name="name" required>
+        </label>
+        <label>
+            Подразделение
+            <input type="text" name="department" required>
+        </label>
+        <label>
+            Год
+            <input type="number" name="year" value="2025" required>
+        </label>
+        <label>
+            Плановая сумма
+            <input type="number" step="0.01" name="amount_planned" required>
+        </label>
+
+        <button type="submit" class="btn">Сохранить</button>
+    </form>
+</section>
+
+<section class="card">
+    <h2>Список бюджетов</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Год</th>
+                <th>Подразделение</th>
+                <th>Название</th>
+                <th>План</th>
+                <th>Факт</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#if budgets.length}}
+            {{#each budgets}}
+                <tr>
+                    <td>{{year}}</td>
+                    <td>{{department}}</td>
+                    <td>{{name}}</td>
+                    <td>{{amount_planned}}</td>
+                    <td>{{amount_actual}}</td>
+                </tr>
+            {{/each}}
+        {{else}}
+            <tr>
+                <td colspan="5">Пока нет данных</td>
+            </tr>
+        {{/if}}
+        </tbody>
+    </table>
+</section>

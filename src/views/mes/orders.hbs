@@ -1,0 +1,51 @@
+<h1>{{title}}</h1>
+
+<section class="card">
+  <h2>Добавить заказ</h2>
+  <form method="post" action="/mes/orders" class="form-grid">
+    <label>
+      Номер заказа
+      <input type="text" name="order_number" required>
+    </label>
+    <label>
+      Наименование продукции
+      <input type="text" name="product_name" required>
+    </label>
+    <label>
+      Количество
+      <input type="number" name="quantity" required>
+    </label>
+
+    <button type="submit" class="btn">Добавить заказ</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Список заказов</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Номер заказа</th>
+        <th>Продукция</th>
+        <th>Количество</th>
+        <th>Статус</th>
+        <th>Дата создания</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orders}}
+        <tr>
+          <td>{{order_number}}</td>
+          <td>{{product_name}}</td>
+          <td>{{quantity}}</td>
+          <td>{{status}}</td>
+          <td>{{created_at}}</td>
+        </tr>
+      {{else}}
+        <tr>
+          <td colspan="5">Нет заказов</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>
