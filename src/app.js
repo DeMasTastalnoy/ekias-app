@@ -61,10 +61,13 @@ app.use((req, res, next) => {
 // Роуты
 
 const appRoutes = require('./routes/app');
+const { requireAuth, requireAdmin } = require('./middleware/auth');
 
-app.use('/app', appRoutes);
-app.use('/app/mes', mesRoutes);
-app.use('/app/finance', financeRoutes);
+
+app.use('/app', requireAuth, appRoutes);
+app.use('/app/mes', requireAuth, mesRoutes);
+app.use('/app/finance', requireAuth, financeRoutes);
+
 
 // а старые /mes и /finance можно временно оставить редиректами:
 app.get('/mes', (req, res) => res.redirect('/app/mes'));
