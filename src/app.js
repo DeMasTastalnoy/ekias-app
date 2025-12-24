@@ -1,4 +1,8 @@
 const path = require('path');
+console.log('RUNNING FILE:', __filename);
+console.log('CWD:', process.cwd());
+console.log('VIEWS DIR SHOULD BE:', path.join(__dirname, 'views'));
+
 const express = require('express');
 const exphbs = require('express-handlebars');
 
@@ -9,6 +13,12 @@ const financeRoutes = require('./routes/finance');
 
 const app = express();
 
+app.use((req, res, next) => {
+  console.log('[REQ]', req.method, req.originalUrl);
+  next();
+});
+
+
 // Парсинг форм
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,22 +27,27 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Handlebars
-app.engine(
-  'hbs',
-  exphbs.engine({
-    extname: 'hbs',
-    defaultLayout: 'main',
-    layoutsDir: path.join(__dirname, 'views', 'layouts'),
-    partialsDir: path.join(__dirname, 'views', 'partials')
-  })
-);
+const hbs = exphbs.create({
+  extname: '.hbs',
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, 'views', 'layouts'),
+  partialsDir: path.join(__dirname, 'views', 'partials'),
+  helpers: {
+    eq: (a, b) => a === b,
+  },
+});
+
+app.engine('hbs', hbs.engine);
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Роуты
-app.use('/', indexRoutes);
 app.use('/mes', mesRoutes);
 app.use('/finance', financeRoutes);
+
+app.use('/', indexRoutes);
+
 // app.use('/scm', scmRoutes);
 // app.use('/hr', hrRoutes);
 // app.use('/bi', biRoutes);

@@ -1,3 +1,5 @@
+
+
 <h1>{{title}}</h1>
 
 <section class="card">
@@ -38,8 +40,14 @@
           <td>{{order_number}}</td>
           <td>{{product_name}}</td>
           <td>{{quantity}}</td>
-          <td>{{status}}</td>
-          <td>{{created_at}}</td>
+          <td>
+  {{#if (eq status "planned")}}В ожидании{{/if}}
+  {{#if (eq status "in_progress")}}В работе{{/if}}
+  {{#if (eq status "done")}}Выполнен{{/if}}
+  {{#if (eq status "cancelled")}}Отменён{{/if}}
+</td>
+
+          <td>{{created_at.[0:10]}}</td>
         </tr>
       {{else}}
         <tr>
