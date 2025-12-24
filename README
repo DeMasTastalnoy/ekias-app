@@ -1,0 +1,12 @@
+Для корректного запуска проекта:
+ни ниже
+node v24.11.1
+npm 11.6.2
+mysql  Ver 8.0.44 for Win64 on x86_64 (MySQL Community Server - GPL)
+
+В терминале:
+npm install для зависимостей
+npm run dev для дебага
+npm start для старта
+
+Дамп базы данных лежит в db-dump
