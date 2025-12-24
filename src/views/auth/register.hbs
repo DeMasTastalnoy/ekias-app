@@ -1,0 +1,70 @@
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-head">
+      <div class="auth-title">Регистрация</div>
+      <a class="auth-close" href="/">✕</a>
+    </div>
+
+    {{#if error}}
+      <div class="auth-alert">{{error}}</div>
+    {{/if}}
+
+    <form method="post" action="/auth/register" class="auth-form">
+      <div class="auth-grid-2">
+        <label>
+          Имя
+          <input name="first_name" required>
+        </label>
+        <label>
+          Фамилия
+          <input name="last_name" required>
+        </label>
+      </div>
+
+      <label>
+        Рабочий Email
+        <input type="email" name="email" placeholder="name@promholding.ru" required>
+        <small class="muted">Используйте корпоративную почту</small>
+      </label>
+
+      <label>
+        Подразделение
+        <select name="department" required>
+          <option value="">Выберите подразделение</option>
+          <option>Производство</option>
+          <option>Логистика</option>
+          <option>Финансы</option>
+          <option>HR</option>
+          <option>ИТ</option>
+        </select>
+      </label>
+
+      <label>
+        Должность
+        <input name="position" placeholder="Например: Инженер-технолог" required>
+      </label>
+
+      <div class="auth-grid-2">
+        <label>
+          Пароль
+          <input type="password" name="password" required>
+        </label>
+        <label>
+          Подтвердите пароль
+          <input type="password" name="password2" required>
+        </label>
+      </div>
+
+      <label class="auth-check">
+        <input type="checkbox" name="accept" value="1">
+        <span>Я согласен с <a href="/terms">правилами использования</a></span>
+      </label>
+
+      <button class="btn auth-btn auth-btn-success" type="submit">Зарегистрироваться</button>
+    </form>
+
+    <div class="auth-foot">
+      Уже есть аккаунт? <a href="/auth/login">Войти</a>
+    </div>
+  </div>
+</div>

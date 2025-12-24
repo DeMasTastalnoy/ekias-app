@@ -1,0 +1,225 @@
+<section class="page">
+  <div class="page-head card">
+    <div class="page-head__left">
+      <div class="pill">📊 Отчеты</div>
+      <h1 class="page-title">Операционные отчеты холдинга</h1>
+      <p class="page-subtitle">Витрина ключевых отчетов и статусов обновлений.</p>
+    </div>
+
+    <div class="page-head__right">
+      <a class="btn btn-secondary" href="/">← На портал</a>
+      <a class="btn" href="/app">Перейти в EKIAS</a>
+    </div>
+  </div>
+
+  <!-- KPI -->
+  <section class="card">
+    <div class="section-head">
+      <div class="pill">KPI</div>
+      <div class="section-title">Быстрые показатели</div>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="kpi-card">
+        <div class="kpi-card__top">
+          <span class="kpi-icon">📈</span>
+          <span class="kpi-label">Средняя производительность</span>
+        </div>
+        <div class="kpi-value">87.5%</div>
+        <div class="bar"><div class="bar__fill is-primary" style="width:87.5%"></div></div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-card__top">
+          <span class="kpi-icon">💸</span>
+          <span class="kpi-label">Снижение издержек</span>
+        </div>
+        <div class="kpi-value">-8.2%</div>
+        <div class="bar"><div class="bar__fill is-success" style="width:45%"></div></div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-card__top">
+          <span class="kpi-icon">🏭</span>
+          <span class="kpi-label">Использование мощностей</span>
+        </div>
+        <div class="kpi-value">94.3%</div>
+        <div class="bar"><div class="bar__fill is-warning" style="width:94.3%"></div></div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-card__top">
+          <span class="kpi-icon">⛏️</span>
+          <span class="kpi-label">Рост объемов добычи</span>
+        </div>
+        <div class="kpi-value">12.4%</div>
+        <div class="bar"><div class="bar__fill is-info" style="width:62%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="card">
+    <div class="section-head">
+      <div class="pill">Фильтры</div>
+      <div class="section-title">Параметры отчета</div>
+    </div>
+
+    <form class="form-grid" id="reportsFilters">
+      <label>
+        Предприятие
+        <select name="enterprise">
+          <option value="all">Все предприятия</option>
+          <option value="1">Северный рудник №1</option>
+          <option value="2">Северный рудник №2</option>
+          <option value="3">Завод переработки №1</option>
+        </select>
+      </label>
+
+      <label>
+        Период
+        <select name="period">
+          <option value="q1">Q1 2024</option>
+          <option value="q2">Q2 2024</option>
+          <option value="month">Текущий месяц</option>
+          <option value="week">Текущая неделя</option>
+        </select>
+      </label>
+
+      <label>
+        Тип отчета
+        <select name="type">
+          <option value="production">Производство</option>
+          <option value="efficiency">Эффективность</option>
+          <option value="quality">Качество</option>
+          <option value="safety">Безопасность</option>
+        </select>
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Применить</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Catalog -->
+  <section class="card">
+    <div class="section-head">
+      <div class="pill">Каталог</div>
+      <div class="section-title">Доступные отчеты</div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="report-card">
+        <div class="report-card__title">📊 Производственные показатели</div>
+        <p class="muted">Объемы добычи и переработки по предприятиям.</p>
+        <ul class="list">
+          <li>Ежедневное обновление</li>
+          <li>Сравнение с планом</li>
+          <li>Тренды и графики</li>
+        </ul>
+        <a href="#" class="btn btn-secondary report-open" data-report="production">Открыть</a>
+      </div>
+
+      <div class="report-card">
+        <div class="report-card__title">⚙️ Эффективность оборудования</div>
+        <p class="muted">КИО, простои, ремонты, рекомендации ТО.</p>
+        <ul class="list">
+          <li>По видам оборудования</li>
+          <li>Простои и ремонты</li>
+          <li>Рекомендации по ТО</li>
+        </ul>
+        <a href="#" class="btn btn-secondary report-open" data-report="equipment">Открыть</a>
+      </div>
+
+      <div class="report-card">
+        <div class="report-card__title">👷 Производительность труда</div>
+        <p class="muted">Выработка, сменность, сравнение с нормами.</p>
+        <ul class="list">
+          <li>Выработка на человека</li>
+          <li>Сравнение с нормативами</li>
+          <li>Анализ сменности</li>
+        </ul>
+        <a href="#" class="btn btn-secondary report-open" data-report="labor">Открыть</a>
+      </div>
+
+      <div class="report-card">
+        <div class="report-card__title">🛡️ Безопасность и ОТ</div>
+        <p class="muted">Инциденты, обучение, аудит СИЗ.</p>
+        <ul class="list">
+          <li>Инциденты за период</li>
+          <li>Обучение персонала</li>
+          <li>Аудит СИЗ</li>
+        </ul>
+        <a href="#" class="btn btn-secondary report-open" data-report="safety">Открыть</a>
+      </div>
+
+      <div class="report-card">
+        <div class="report-card__title">⚡ Энергопотребление</div>
+        <p class="muted">Энергия/топливо, нормы, экономия.</p>
+        <ul class="list">
+          <li>По цехам</li>
+          <li>Сравнение с нормами</li>
+          <li>Рекомендации экономии</li>
+        </ul>
+        <a href="#" class="btn btn-secondary report-open" data-report="energy">Открыть</a>
+      </div>
+
+      <div class="report-card">
+        <div class="report-card__title">✅ Качество продукции</div>
+        <p class="muted">Брак, ГОСТ, жалобы, переделы.</p>
+        <ul class="list">
+          <li>Брак и переделы</li>
+          <li>Соответствие ГОСТ</li>
+          <li>Жалобы клиентов</li>
+        </ul>
+        <a href="#" class="btn btn-secondary report-open" data-report="quality">Открыть</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Updates -->
+  <section class="card">
+    <div class="section-head">
+      <div class="pill">Обновления</div>
+      <div class="section-title">Последние обновления отчетов</div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Отчет</th>
+          <th>Дата обновления</th>
+          <th>Статус</th>
+          <th>Ответственный</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Производство за март</td>
+          <td>01.04.2024 14:30</td>
+          <td><span class="badge is-success">Опубликован</span></td>
+          <td>Петров А.И.</td>
+        </tr>
+        <tr>
+          <td>Эффективность оборудования Q1</td>
+          <td>28.03.2024 11:15</td>
+          <td><span class="badge is-success">Опубликован</span></td>
+          <td>Сидорова М.К.</td>
+        </tr>
+        <tr>
+          <td>Безопасность труда</td>
+          <td>25.03.2024 16:45</td>
+          <td><span class="badge is-warning">На проверке</span></td>
+          <td>Козлов В.П.</td>
+        </tr>
+        <tr>
+          <td>Энергопотребление февраль</td>
+          <td>01.03.2024 10:20</td>
+          <td><span class="badge is-success">Опубликован</span></td>
+          <td>Иванова Е.С.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

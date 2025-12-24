@@ -1,0 +1,30 @@
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-head">
+      <div class="auth-title">Вход</div>
+      <a class="auth-close" href="/">✕</a>
+    </div>
+
+    {{#if error}}
+      <div class="auth-alert">{{error}}</div>
+    {{/if}}
+
+    <form method="post" action="/auth/login" class="auth-form">
+      <label>
+        Рабочий Email
+        <input type="email" name="email" placeholder="name@promholding.ru" required>
+      </label>
+
+      <label>
+        Пароль
+        <input type="password" name="password" required>
+      </label>
+
+      <button class="btn auth-btn" type="submit">Войти</button>
+    </form>
+
+    <div class="auth-foot">
+      Нет аккаунта? <a href="/auth/register">Зарегистрироваться</a>
+    </div>
+  </div>
+</div>

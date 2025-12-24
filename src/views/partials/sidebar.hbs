@@ -1,3 +1,15 @@
+{{#if user}}
+  <div class="sidebar-user">
+    <div class="sidebar-user__name">{{user.name}}</div>
+    <div class="sidebar-user__email muted">{{user.email}}</div>
+  </div>
+{{else}}
+  <div class="sidebar-user">
+    <a class="btn btn-sm" href="/auth/login">Войти</a>
+  </div>
+{{/if}}
+
+
 <ul>
     <li>
         <a href="/">
@@ -10,7 +22,7 @@
                     <path d="M3 19h18" />
                 </svg>
             </span>
-            <span>Обзор</span>
+            <span>Обратно на главную</span>
         </a>
     </li>
 
@@ -82,6 +94,11 @@
     </li>
 </ul>
 <ul>
-    <li><a href="/mes/orders">Заказы MES</a></li>
-    <li><a href="/mes/production-facts">Факты производства</a></li>
+{{#if isMes}}
+  <ul>
+    <li><a href="/app/mes/orders">Заказы MES</a></li>
+    <li><a href="/app/mes/production-facts">Факты производства</a></li>
+  </ul>
+{{/if}}
+
 </ul>

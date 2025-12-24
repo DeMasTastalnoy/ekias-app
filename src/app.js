@@ -42,7 +42,24 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
+const session = require('express-session');
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'dev_secret_change_me',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { httpOnly: true }
+}));
+
+// чтобы user был доступен в hbs
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
+
 // Роуты
+
 const appRoutes = require('./routes/app');
 
 app.use('/app', appRoutes);
@@ -50,10 +67,20 @@ app.use('/app/mes', mesRoutes);
 app.use('/app/finance', financeRoutes);
 
 // а старые /mes и /finance можно временно оставить редиректами:
-app.get('/mes', (req, res) => res.redirect('/app/mes/orders'));
+app.get('/mes', (req, res) => res.redirect('/app/mes'));
 app.get('/finance', (req, res) => res.redirect('/app/finance'));
 
 app.use('/', indexRoutes);
+
+const authRoutes = require('./routes/auth');
+app.use('/auth', authRoutes);
+
+app.use((req, res, next) => {
+  res.locals.currentPath = req.originalUrl;
+  res.locals.isMes = req.originalUrl.startsWith('/app/mes');
+  next();
+});
+
 
 // app.use('/scm', scmRoutes);
 // app.use('/hr', hrRoutes);

@@ -16,4 +16,16 @@ router.get('/about', (req, res) => {
   });
 });
 
+router.get('/reports', (req, res) => {
+  res.render('reports', {
+    layout: 'main_public',
+    title: 'Операционные отчеты',
+  });
+});
+
+router.get('/terms', (req, res) => {
+  res.render('terms', { title: 'Правила использования', layout: 'main_public' });
+});
+
+
 module.exports = router;

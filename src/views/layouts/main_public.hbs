@@ -7,8 +7,39 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+
+  <header class="topnav">
+    <div class="topnav__inner">
+      <a class="topnav__brand" href="/">
+        <span class="topnav__logo">ПромХолдинг</span>
+        <span class="topnav__brandText muted">Портал</span>
+      </a>
+
+      <nav class="topnav__links">
+  <a class="topnav__link" href="/">Новости</a>
+  <a class="topnav__link" href="/reports">Отчеты</a>
+  <a class="topnav__link" href="/about">О проекте</a>
+
+  <a class="btn btn-sm" href="/app">Перейти в EKIAS</a>
+
+  {{#if user}}
+    <span class="topnav__user">
+      {{user.name}}
+      {{#if (eq user.role "admin")}}<span class="topnav__role">admin</span>{{/if}}
+    </span>
+    <a class="btn btn-secondary btn-sm" href="/auth/logout">Выйти</a>
+  {{else}}
+    <a class="btn btn-secondary btn-sm" href="/auth/login">Войти</a>
+    <a class="btn btn-sm" href="/auth/register">Регистрация</a>
+  {{/if}}
+</nav>
+
+    </div>
+  </header>
+
   <main class="public">
     {{{body}}}
   </main>
+
 </body>
 </html>

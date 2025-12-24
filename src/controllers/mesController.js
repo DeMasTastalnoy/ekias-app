@@ -30,7 +30,7 @@ module.exports = {
         [order_number, product_name, quantity]
       );
 
-      return res.redirect('/mes/orders');
+      return res.redirect('/app/mes/orders');
     } catch (err) {
       console.error(err);
       return res.status(500).send('Ошибка при добавлении заказа');
@@ -73,10 +73,35 @@ module.exports = {
         [order_id, produced_quantity, production_date]
       );
 
-      return res.redirect('/mes/production-facts');
+      return res.redirect('/app/mes/production-facts');
     } catch (err) {
       console.error(err);
       return res.status(500).send('Ошибка при добавлении факта производства');
     }
   },
+  // Смена статуса заказа
+async updateOrderStatus(req, res) {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const allowed = new Set(['planned', 'in_progress', 'done', 'cancelled']);
+  if (!allowed.has(status)) {
+    return res.status(400).send('Некорректный статус');
+  }
+
+  try {
+    await db.query(
+      'UPDATE mes_orders SET status = ? WHERE id = ?',
+      [status, id]
+    );
+    return res.redirect('/app/mes/orders');
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send('Ошибка при обновлении статуса заказа');
+  }
+},
+
 };
+
+
+

@@ -4,7 +4,7 @@
 
 <section class="card">
   <h2>Добавить заказ</h2>
-  <form method="post" action="/mes/orders" class="form-grid">
+  <form method="post" action="/app/mes/orders" class="form-grid">
     <label>
       Номер заказа
       <input type="text" name="order_number" required>
@@ -41,13 +41,21 @@
           <td>{{product_name}}</td>
           <td>{{quantity}}</td>
           <td>
-  {{#if (eq status "planned")}}В ожидании{{/if}}
-  {{#if (eq status "in_progress")}}В работе{{/if}}
-  {{#if (eq status "done")}}Выполнен{{/if}}
-  {{#if (eq status "cancelled")}}Отменён{{/if}}
+  <td>
+  <form method="post" action="/app/mes/orders/{{id}}/status" style="display:flex; gap:10px; align-items:center;">
+    <select name="status">
+      <option value="planned" {{#if (eq status "planned")}}selected{{/if}}>В ожидании</option>
+      <option value="in_progress" {{#if (eq status "in_progress")}}selected{{/if}}>В работе</option>
+      <option value="done" {{#if (eq status "done")}}selected{{/if}}>Выполнен</option>
+      <option value="cancelled" {{#if (eq status "cancelled")}}selected{{/if}}>Отменён</option>
+    </select>
+    <button class="btn btn-sm" type="submit">Сохранить</button>
+  </form>
 </td>
 
-          <td>{{created_at.[0:10]}}</td>
+</td>
+
+          <td>{{created_at}}</td>
         </tr>
       {{else}}
         <tr>
