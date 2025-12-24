@@ -43,8 +43,15 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Роуты
-app.use('/mes', mesRoutes);
-app.use('/finance', financeRoutes);
+const appRoutes = require('./routes/app');
+
+app.use('/app', appRoutes);
+app.use('/app/mes', mesRoutes);
+app.use('/app/finance', financeRoutes);
+
+// а старые /mes и /finance можно временно оставить редиректами:
+app.get('/mes', (req, res) => res.redirect('/app/mes/orders'));
+app.get('/finance', (req, res) => res.redirect('/app/finance'));
 
 app.use('/', indexRoutes);
 
